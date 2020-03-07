@@ -1,7 +1,7 @@
 steps:
 - name: "gcr.io/cloud-builders/gcloud"
-  args: ["app", "deploy"]
   env:
     - MONGO_URI=$_MONGO_URI
+  args: ["app", "deploy"]
 timeout: "1600s"
 

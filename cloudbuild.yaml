@@ -1,7 +1,19 @@
 steps:
+
+#   # Export env variables 
+# - name: "gcr.io/cloud-builders/bash"
+#   args: ["source", "./config/config.env"]
+
+
 - name: "gcr.io/cloud-builders/gcloud"
-  env:
-    - MONGO_URI=${_MONGO_URI}
   args: ["app", "deploy"]
+  env: ["MONGO_URI=$$MONGO_URI"]
+  secretEnv: ["MONGO_URI"]
+  
+  secrets:
+  - kmsKeyName: projects/mernongae/locations/global/keyRings/cloudbuild-keys/cryptoKeys/api-key
+    secretEnv:
+      MONGO_URI: [base64-encoded encrypted secret]
+    
 timeout: "1600s"
 

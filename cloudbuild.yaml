@@ -7,13 +7,14 @@ steps:
 
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
-  env: ["MONGO_URI=$$MONGO_URI"]
+  env:
+  - MONGO_URI=$$MONGO_URI
   secretEnv: ["MONGO_URI"]
   
 secrets:
 - kmsKeyName: projects/mernongae/locations/global/keyRings/cloudbuild-keys/cryptoKeys/api-key
   secretEnv:
-    MONGO_URI: [base64-encoded encrypted secret]
+    MONGO_URI: CiQAAOV/O9N4tnh531D2hZCIdzNbCwVEVJOaTxZMtc3yKZeJ3KsSfwByY0FP9CA6gX5ofPKLy3k67G2hEA9v8Zslvq5Pmt9UTXaXI0msu6PGOIlfNmM0vFzkBR+h+ksCaPBO9V1moQOZr9u5Nfg/pQ+Quci+KwhEm5bKSoqRhcHZlEBW7gqjs9FzralQ5tWBGnVWmX7IncWTIMR5HrUzlY/Oktt7l8g=
     
 timeout: "1600s"
 

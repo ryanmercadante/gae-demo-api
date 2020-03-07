@@ -6,6 +6,7 @@ steps:
 
 
 - name: "gcr.io/cloud-builders/gcloud"
+  entrypoint: bash
   args: ["app", "deploy"]
   env:
   - MONGO_URI=$$MONGO_SECRET

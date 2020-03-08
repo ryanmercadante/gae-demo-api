@@ -2,8 +2,6 @@ const express = require('express')
 const router = express.Router()
 const { getUsers, addUser, deleteUser } = require('../controllers/users.js')
 
-console.log('testing')
-
 router
   .route('/')
   .get(getUsers)
@@ -11,6 +9,7 @@ router
 
 router
   .route('/:id')
+  
   .delete(deleteUser)
 
 module.exports = router

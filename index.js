@@ -9,6 +9,8 @@ dotenv.config({ path: './config/config.env' })
 
 connectDb()
 
+console.log('test')
+
 const users = require('./routes/users')
 
 const app = express()
@@ -25,7 +27,7 @@ app.use('/api/v1/users', users)
 const PORT = process.env.PORT || 4000
 
 app.get('/', (req, res) => {
-  res.send({msg:'hello world'})
+  res.send({ msg: 'hello world' })
 })
 
 app.listen(PORT, () => {
